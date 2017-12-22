@@ -15,8 +15,10 @@ class GestionTxt extends CI_Controller
 		$this -> load -> model('import_Txt_Modele');
 		$this->load ->view('Base_HTML/Header');
 		
-		
-		$dossier = 'Téléchargements/';
+		if(file_exists ('Telechargements/Of/')== FALSE){ //Si le dossier dans lequel on veut ranger le fichier n'existe pas il faut le créer
+		mkdir('Telechargements/Of/', 0777, true); // En mode modifiable
+		};
+		$dossier = 'Telechargements/Of/';
 		$fichier = basename($_FILES['mon_fichier']['name']);
 		$extensions = array('.txt', '.xls');
 		$extension = strrchr($_FILES['mon_fichier']['name'], '.'); 
